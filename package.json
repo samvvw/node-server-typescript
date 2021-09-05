@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"tsc -w\" \"nodemon dist/app.js\"",
-    "test": "tsc && mocha dist --exit"
+    "test": "set NODE_ENV=test& tsc && mocha dist --exit"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^6.0.4"
   }
 }
