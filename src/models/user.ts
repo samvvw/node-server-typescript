@@ -1,8 +1,15 @@
 import mongoose from 'mongoose'
 
-const { Schema } = mongoose
+const { Schema, models } = mongoose
 
-const userSchema = new Schema({
+interface User extends mongoose.Document {
+  userName: string
+  email: string
+  password: string
+  createdAt: () => number | number
+}
+
+const userSchema = new Schema<User>({
   userName: {
     type: String,
     required: true,
@@ -12,6 +19,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    unique: true,
+    validate: {
+      validator: async function (email: string) {
+        const exists = await models.User.countDocuments({ email })
+        return !exists
+      },
+      message: (props) => `${props.value} already exists`,
+    },
   },
   password: {
     type: String,
@@ -24,6 +39,6 @@ const userSchema = new Schema({
   },
 })
 
-const User = mongoose.model('Blog', userSchema)
+const User = mongoose.model<User>('User', userSchema)
 
 export default User
