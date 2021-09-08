@@ -30,7 +30,9 @@ app.get('/', (req, res) => {
 app.use('/api', apiRouter)
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`)
+  console.log(
+    `Server running on http://localhost:${PORT} Env: ${process.env.NODE_ENV}`
+  )
 })
 
 export default app
