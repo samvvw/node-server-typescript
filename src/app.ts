@@ -1,7 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import morgan from 'morgan'
-
 import apiRouter from './api/api'
 import testRouter from './routes/test.routes'
 import connectDB from './config/db'

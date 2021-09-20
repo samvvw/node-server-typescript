@@ -70,8 +70,6 @@ describe('User API Tests', function () {
         .set('Content-type', 'application/json')
         .send(data)
 
-      console.log(resp.body)
-
       assert.equal(resp.status, 400)
       assert.equal(
         resp.body.message,

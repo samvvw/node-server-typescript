@@ -10,7 +10,6 @@ export const userSignUp = async (
 
     res.status(201).json({ dbResponse })
   } catch (error) {
-    // console.error(error)
     res.status(400).send(error)
   }
 }
